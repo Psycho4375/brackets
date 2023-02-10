@@ -1,25 +1,37 @@
 module.exports = function check(str, bracketsConfig) {
-  function check(str, bracketsConfig) {
-    let stack = [];
-    let brackets = {
-        ')': '(',
-        '}': '{',
-        ']': '['
-    };
-       for (let i = 0; i < str.length; i++){
-        const current = s[i];
-
-        if (isClosedBracket(current)){
-            if (brackets[current] !== stack.pop()) return false;
-        } else {
-            stack.push(current);
-        }
+    let current = 0;
+    for (i = 0; i < str.length; i++){
+            switch (bracketsConfig.length){
+                case 1:
+                    if (str[i] == bracketsConfig[0][0]){
+                    current++;
+                    } else if (str[i] == bracketsConfig[0][1]){
+                        
+                    current--;
+                    }
+                    break;
+                case 2:
+                    if (str[i] == bracketsConfig[0][0] || str[i] == bracketsConfig[1][0]){
+                    current++;
+                    } else if (str[i] == bracketsConfig[0][1] || str[i] == bracketsConfig[1][1]){
+                    current--;
+                    }
+                    break;
+                case 3:
+                    if (str[i] == bracketsConfig[0][0] || str[i] == bracketsConfig[1][0] || str[i] == bracketsConfig[2][0]){
+                    current++;
+                    } else if (str[i] == bracketsConfig[0][1] || str[i] == bracketsConfig[1][1] || str[i] == bracketsConfig[2][1]){
+                    current--;
+                    }
+                    break;
+            }
+            
+            
+    }
+    if (current == 0){
+        return true;
+    } else {
+        return false
     }
 
-    return stack.length === 0;
-}
-
-function isClosedBracket (ch) {
-    return [')','}',']'].indexOf(ch) > -1;
-}
 }
