@@ -28,10 +28,8 @@ module.exports = function check(str, bracketsConfig) {
                             current--;
                         }
                     }
-                    break;
+                break;
             }
-            
-            
     }
     if (current == 0){
         return true;
