@@ -1,5 +1,5 @@
 module.exports = function check(str, bracketsConfig) {
-    let current = '';
+  let current = '';
     for (i = 0; i < str.length; i++){
             switch (bracketsConfig.length){
                 case 1:
@@ -28,11 +28,12 @@ module.exports = function check(str, bracketsConfig) {
                             current--;
                         }
                     }
-                break;
-            }
+                    break;
+            }     
     }
     if (current == 0){
         return true;
     } else {
         return false
     }
+}
